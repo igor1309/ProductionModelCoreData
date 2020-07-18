@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Component" representedClassName="Component" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="ingredient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="component" inverseEntity="Ingredient"/>
+    </entity>
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES" codeGenerationType="class">
+        <attribute name="qty" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="component" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Component" inverseName="ingredient" inverseEntity="Component"/>
+        <relationship name="products" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="ingredients_" inverseEntity="Product"/>
+    </entity>
+    <entity name="Labour" representedClassName="Labour" syncable="YES" codeGenerationType="class">
+        <relationship name="products" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="labor" inverseEntity="Product"/>
+    </entity>
+    <entity name="Packaging" representedClassName="Packaging" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="packaging" inverseEntity="Product"/>
+    </entity>
+    <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
+        <attribute name="code_" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="ingredients_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="products" inverseEntity="Ingredient"/>
+        <relationship name="labor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Labour" inverseName="products" inverseEntity="Labour"/>
+        <relationship name="packaging" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Packaging" inverseName="newRelationship" inverseEntity="Packaging"/>
+        <relationship name="utility" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Utility" inverseName="product" inverseEntity="Utility"/>
+    </entity>
+    <entity name="Utility" representedClassName="Utility" syncable="YES" codeGenerationType="class">
+        <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="utility" inverseEntity="Product"/>
+    </entity>
+    <elements>
+        <element name="Component" positionX="-679.34375" positionY="-270.0703125" width="128" height="103"/>
+        <element name="Ingredient" positionX="-480.6484375" positionY="-274.43359375" width="128" height="88"/>
+        <element name="Labour" positionX="-52.96484375" positionY="-267.73828125" width="128" height="58"/>
+        <element name="Packaging" positionX="-487.9921875" positionY="-71.5546875" width="128" height="88"/>
+        <element name="Product" positionX="-264.671875" positionY="-219.55078125" width="128" height="148"/>
+        <element name="Utility" positionX="-52.70703125" positionY="-82.4609375" width="128" height="73"/>
+    </elements>
+</model>
